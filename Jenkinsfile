@@ -22,6 +22,10 @@ node {
             app.push("latest")
         }
     }
+    stage('Inject credentials'){
+      sshagent(['my-ssh-key']) {
+    sh kubectl set image deployments/serverjsdeployment serverjsdeployment=docker.io/ionahiggins/courseworkv2 && ./multiple_users.sh
+    }
 }
 
 
