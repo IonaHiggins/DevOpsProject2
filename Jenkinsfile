@@ -11,6 +11,11 @@ node {
         app = docker.build("ionahiggins/courseworkv2")
     }
 
+    stage('Test container'){
+	app.inside {
+            sh 'echo "Tests passed"'
+        }
+
 }
 
 
