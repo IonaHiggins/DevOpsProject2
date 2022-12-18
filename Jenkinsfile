@@ -23,6 +23,11 @@ node {
         }
     }
    
+    stage('Deploy Kubernetes Build'){
+      sshagent(['my-ssh-key']) {
+      sh  'ssh ubuntu@ec2-18-234-108-93.compute-1.amazonaws.com' kubectl set image deployments/serverjsdeployment serverjsdeployment=docker.io/ionahiggins/courseworkv2:latest && ./multiple_users.sh}
+      }
+    }
 }
 
 
