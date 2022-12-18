@@ -11,9 +11,15 @@ node {
         app = docker.build("ionahiggins/courseworkv2")
     }
 
-    stage('Test container'){
+    stage('Test Container'){
 	app.inside {
-            sh 'echo "Tests passed"'
+            sh 'echo "Test to run a command within container passed."'
+        }
+    }
+    stage('Push Image to DockerHub'){
+         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
         }
     }
 }
