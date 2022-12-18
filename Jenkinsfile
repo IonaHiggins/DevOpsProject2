@@ -1,8 +1,9 @@
 node {
-    stage('Clone Github Repository') {
-        script{
-                git credentialsId: 'jenkins-user-github', url: 'https://github.com/aakashsehgal/FMU.git'
-        }
+   
+     stage('Clone repository') {
+        /* Let's make sure we have the repository cloned to our workspace */
+
+        checkout scm
     }
 
     stage('Build Docker Image') {
