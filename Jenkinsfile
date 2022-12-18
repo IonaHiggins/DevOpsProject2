@@ -15,7 +15,7 @@ node {
 	app.inside {
             sh 'echo "Tests passed"'
         }
-
+    }
 }
 
 
